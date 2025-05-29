@@ -23,7 +23,6 @@ import { MailModule } from './modules/mail/mail.module';
     UsersModule,    // Existing modules
     AuthModule,
     UniversityModule,
-    verification_logs
     VerificationLogsModule, // New module
     SupportModule,
     CustomMailerModule,
