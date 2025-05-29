@@ -8,14 +8,8 @@ import {
   ManyToOne,
 } from 'typeorm';
 import { OTP } from './otp.entity';
-import { University } from '../../university/entities/university.entity';
-
-export enum Role {
-  SUPER_ADMIN = 'SUPER_ADMIN',
-  ADMIN = 'ADMIN',
-  UNIVERSITY_ADMIN = 'UNIVERSITY_ADMIN',
-  USER = 'USER',
-}
+import { Role } from './role.enum';
+import type { University } from '../../university/entities/university.entity';
 
 @Entity('admins')
 export class Admin {
@@ -35,7 +29,7 @@ export class Admin {
   })
   role?: Role;
 
-  @ManyToOne(() => University, (university) => university.admins, {
+  @ManyToOne('University', 'admins', {
     nullable: true,
   })
   university?: University;

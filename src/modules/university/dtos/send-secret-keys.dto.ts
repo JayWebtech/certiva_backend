@@ -1,12 +1,34 @@
-import { z } from 'zod';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsArray, IsEmail, IsString, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
 
-export const sendSecretKeysSchema = z.object({
-  data: z.array(
-    z.object({
-      email: z.string().email('Invalid email address'),
-      secretKey: z.string().min(1, 'Secret key is required'),
-    })
-  ).min(1, 'At least one email and secret key pair is required'),
-});
+class SecretKeyData {
+  @ApiProperty({
+    description: 'Email address to send the secret key to',
+    example: 'admin@example.edu'
+  })
+  @IsEmail()
+  email: string;
 
-export type SendSecretKeysDTO = z.infer<typeof sendSecretKeysSchema>; 
+  @ApiProperty({
+    description: 'Secret key to be sent',
+    example: 'sk_live_123456789abcdef'
+  })
+  @IsString()
+  secretKey: string;
+}
+
+export class SendSecretKeysDTO {
+  @ApiProperty({
+    description: 'Array of email and secret key pairs',
+    type: [SecretKeyData],
+    example: [{
+      email: 'admin@example.edu',
+      secretKey: 'sk_live_123456789abcdef'
+    }]
+  })
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => SecretKeyData)
+  data: SecretKeyData[];
+} 

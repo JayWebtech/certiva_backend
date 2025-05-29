@@ -17,7 +17,7 @@ export const dataSourceOptions: DataSourceOptions = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: [University, SupportRequest, User, VerificationLog, Admin, OTP],
-  migrations: ['dist/migrations/*.js'],
+  migrations: ['src/migrations/*.ts'],
   synchronize: process.env.NODE_ENV !== 'production',
 };
 
