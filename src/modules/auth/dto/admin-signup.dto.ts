@@ -7,7 +7,7 @@ import {
   Validate,
 } from 'class-validator';
 import { MatchPassword } from '../validators/password.validator';
-import { Role } from '../entities/admin.entity';
+import { Role } from '../entities/role.enum';
 export class SignupAdminDto {
   @IsEmail()
   @IsNotEmpty()

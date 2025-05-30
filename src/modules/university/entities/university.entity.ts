@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Admin } from '../../auth/entities/admin.entity';
+import type { Admin } from '../../auth/entities/admin.entity';
 
 @Entity()
 export class University {
@@ -39,6 +39,6 @@ export class University {
   @Column({ default: false })
   is_verified: boolean;
 
-  @OneToMany(() => Admin, (admin) => admin.university)
+  @OneToMany('Admin', 'university')
   admins?: Admin[];
 }

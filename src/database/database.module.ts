@@ -3,6 +3,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { VerificationLog } from '../entities/verification-log.entity';
+import { University } from '../modules/university/entities/university.entity';
+import { Admin } from '../modules/auth/entities/admin.entity';
+import { OTP } from '../modules/auth/entities/otp.entity';
 
 @Module({
   imports: [
@@ -16,7 +19,7 @@ import { VerificationLog } from '../entities/verification-log.entity';
           username: configService.get('DB_USERNAME'),
           password: configService.get('DB_PASSWORD'),
           database: configService.get('DB_NAME'),
-          entities: [VerificationLog],
+          entities: [VerificationLog, University, Admin, OTP],
           synchronize: false,
         };
        

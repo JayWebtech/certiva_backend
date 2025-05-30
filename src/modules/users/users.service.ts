@@ -5,7 +5,8 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Admin, Role } from '../auth/entities/admin.entity';
+import { Admin } from '../auth/entities/admin.entity';
+import { Role } from '../auth/entities/role.enum';
 import { University } from '../university/entities/university.entity';
 import { SignupAdminDto } from '../auth/dto/admin-signup.dto';
 import { CreateUniversityDTO } from '../university/dtos/create-university.dto';
