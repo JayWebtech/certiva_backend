@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+const eduDomainPattern = /^((?!-)[a-zA-Z0-9-]{1,63}(?<!-)\.)*((?!-)[a-zA-Z0-9-]{1,63}(?<!-))\.edu$/;
+
 export const registerUniversitySchema = z
   .object({
     university_name: z.string()
@@ -7,7 +9,15 @@ export const registerUniversitySchema = z
       .max(200, 'University name must not exceed 200 characters'),
     website_domain: z.string()
       .min(1, 'Website domain is required')
-      .max(50, 'Website domain must not exceed 50 characters'),
+      .trim()
+      .max(50, 'Website domain must not exceed 50 characters')
+      .toLowerCase()
+      .refine(domain => domain.endsWith('.edu'), {
+        message: 'Website domain must end with .edu',
+      })
+      .refine(domain => eduDomainPattern.test(domain), {
+        message: 'Website domain must be a valid .edu domain. Example: university.edu',
+      }),
     country: z.string()
       .min(1, 'Country is required')
       .max(50, 'Country name must not exceed 50 characters'),
