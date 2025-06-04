@@ -6,10 +6,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UniversityModule } from './modules/university/university.module';
+import { SupportModule } from './modules/support/support.module';
 import appConfig from './config/app.config';
 import { DatabaseModule } from './database/database.module';
 import { VerificationLogsModule } from './modules/verification-logs/verification-logs.module';
 import { StatisticsModule } from './modules/statistics/statistics.module';
+import { CustomMailerModule } from './mailer/mailer.module';
+import { MailModule } from './modules/mail/mail.module';
 @Module({
   imports: [
     StatisticsModule,
@@ -23,6 +26,9 @@ import { StatisticsModule } from './modules/statistics/statistics.module';
     AuthModule,
     UniversityModule,
     VerificationLogsModule, // New module
+    SupportModule,
+    CustomMailerModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
