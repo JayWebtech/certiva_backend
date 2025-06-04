@@ -9,8 +9,10 @@ import { UniversityModule } from './modules/university/university.module';
 import appConfig from './config/app.config';
 import { DatabaseModule } from './database/database.module';
 import { VerificationLogsModule } from './modules/verification-logs/verification-logs.module';
+import { StatisticsModule } from './modules/statistics/statistics.module';
 @Module({
   imports: [
+    StatisticsModule,
     ConfigModule.forRoot({
       envFilePath: ['.env'],
       isGlobal: true,
