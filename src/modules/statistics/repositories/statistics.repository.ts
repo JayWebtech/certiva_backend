@@ -18,39 +18,39 @@ export class StatisticsRepository {
 
   async getTotalUniversities(): Promise<number> {
     try {
-      return this.universityRepo.count(); // Simple count query
+      return await this.universityRepo.count(); // Simple count query
     } catch (error) {
-      throw new DatabaseException('Failed to count universities', error);
+      throw new DatabaseException('Failed to count universities');
     }
   }
 
   async getVerifiedCertificatesCount(): Promise<number> {
     try {
-      return this.certificateRepo.count({
+      return await this.certificateRepo.count({
         where: { status: 'verified' } // Filter by status
       });
     } catch (error) {
-      throw new DatabaseException('Failed to count verified certificates', error);
+      throw new DatabaseException('Failed to count verified certificates');
     }
   }
 
   async getFailedVerificationsCount(): Promise<number> {
     try {
-      return this.verificationRepo.count({
+      return await this.verificationRepo.count({
         where: { status: 'failed' } // Filter by failed status
       });
     } catch (error) {
-      throw new DatabaseException('Failed to count failed verifications', error);
+      throw new DatabaseException('Failed to count failed verifications');
     }
   }
 
   async getRevokedCertificatesCount(): Promise<number> {
     try {
-      return this.certificateRepo.count({
+      return await this.certificateRepo.count({
         where: { status: 'revoked' } // Filter by revoked status
       });
     } catch (error) {
-      throw new DatabaseException('Failed to count revoked certificates', error);
+      throw new DatabaseException('Failed to count revoked certificates');
     }
   }
 }

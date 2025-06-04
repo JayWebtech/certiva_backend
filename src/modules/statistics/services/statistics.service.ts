@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { StatisticsResponseDto } from 'src/modules/statistics/dto/statistics-response.dto';
-import { StatisticsRepository } from 'src/modules/statistics/repositories/statistics.repository';
-import { DatabaseException } from 'src/modules/shared/exceptions/database.exception';
-import { LoggerService } from 'src/modules/shared/logger/logger.service';
+import { StatisticsRepository } from '../repositories/statistics.repository';
+import { DatabaseException } from '../../shared/exceptions/database.exception';
+import { LoggerService } from '../../shared/logger/logger.service';
 
 @Injectable()
 export class StatisticsService {
