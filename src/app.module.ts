@@ -13,6 +13,8 @@ import { VerificationLogsModule } from './modules/verification-logs/verification
 import { StatisticsModule } from './modules/statistics/statistics.module';
 import { CustomMailerModule } from './mailer/mailer.module';
 import { MailModule } from './modules/mail/mail.module';
+import { VerifyModule } from './modules/verify/verify.module';
+
 @Module({
   imports: [
     StatisticsModule,
@@ -29,6 +31,7 @@ import { MailModule } from './modules/mail/mail.module';
     SupportModule,
     CustomMailerModule,
     MailModule,
+    VerifyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
