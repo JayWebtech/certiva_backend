@@ -6,6 +6,7 @@ import { VerificationLog } from '../entities/verification-log.entity';
 import { University } from '../modules/university/entities/university.entity';
 import { Admin } from '../modules/auth/entities/admin.entity';
 import { OTP } from '../modules/auth/entities/otp.entity';
+import { Verify } from '../modules/verify/entities/verify.entity';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { OTP } from '../modules/auth/entities/otp.entity';
           username: configService.get('DB_USERNAME'),
           password: configService.get('DB_PASSWORD'),
           database: configService.get('DB_NAME'),
-          entities: [VerificationLog, University, Admin, OTP],
+          entities: [VerificationLog, University, Admin, OTP, Verify],
           synchronize: false,
         };
        
