@@ -10,10 +10,12 @@ import { SupportModule } from './modules/support/support.module';
 import appConfig from './config/app.config';
 import { DatabaseModule } from './database/database.module';
 import { VerificationLogsModule } from './modules/verification-logs/verification-logs.module';
+import { StatisticsModule } from './modules/statistics/statistics.module';
 import { CustomMailerModule } from './mailer/mailer.module';
 import { MailModule } from './modules/mail/mail.module';
 @Module({
   imports: [
+    StatisticsModule,
     ConfigModule.forRoot({
       envFilePath: ['.env'],
       isGlobal: true,
